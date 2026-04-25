@@ -41,7 +41,14 @@ gateway-service  | Gateway running on port 3003
 
 Open browser > Hit the above URLs > Ensure responses are received
 http://localhost:3000 → User Service
+<img width="625" height="144" alt="image" src="https://github.com/user-attachments/assets/1c020847-d30d-4230-bd00-96d467102752" />
+
 http://localhost:3001 → Product Service
+<img width="737" height="180" alt="image" src="https://github.com/user-attachments/assets/6d127c5b-9116-4ea3-9261-45c43bd51229" />
+
+http://localhost:3002 > Order Service
+<img width="526" height="139" alt="image" src="https://github.com/user-attachments/assets/11279d81-b7b2-4520-9922-4a1a03d23fbf" />
+
 http://localhost:3003 → Gateway Service
 
 ### Troubleshooting
