@@ -1,9 +1,9 @@
+version: '3'
+
 services:
 
   user-service:
-    build:
-      context:  /root/Microservices-Task/Microservices/user-service
-      dockerfile: /root/Microservices-Task/submission/user-service/Dockerfile
+    build: ./microservices/user-service
     container_name: user_service
     ports:
       - "3000:3000"
@@ -12,9 +12,7 @@ services:
     restart: unless-stopped
 
   product-service:
-    build:
-      context:  /root/Microservices-Task/Microservices/product-service
-      dockerfile: /root/Microservices-Task/submission/product-service/Dockerfile
+    build: ./microservices/product-service
     container_name: product_service
     ports:
       - "3001:3001"
@@ -23,9 +21,7 @@ services:
     restart: unless-stopped
 
   order-service:
-    build:
-      context:  /root/Microservices-Task/Microservices/order-service
-      dockerfile: /root/Microservices-Task/submission/order-service/Dockerfile
+    build: ./microservices/order-service
     container_name: order_service
     ports:
       - "3002:3002"
@@ -34,9 +30,7 @@ services:
     restart: unless-stopped
 
   gateway-service:
-    build:
-      context: /root/Microservices-Task/Microservices/gateway-service
-      dockerfile: /root/Microservices-Task/submission/gateway-service/Dockerfile
+    build: ./microservices/gateway-service
     container_name: gateway_service
     ports:
       - "3003:3003"
