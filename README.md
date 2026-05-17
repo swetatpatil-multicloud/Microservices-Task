@@ -57,7 +57,7 @@ Module errors > Run npm install locally
 
 ### Screenshots showing running containers and browser output)
 
-<img width="940" height="743" alt="image" src="https://github.com/user-attachments/assets/ac1e6d58-7666-468e-81dc-68be7bd9ca9b" />
+<img width="946" height="633" alt="image" src="https://github.com/user-attachments/assets/b6897fd0-2ab5-4745-a16c-1e62f15754fa" />
 
 <img width="1906" height="577" alt="image" src="https://github.com/user-attachments/assets/0acf6098-2441-46fd-a0c2-b61ce4794729" />
 
