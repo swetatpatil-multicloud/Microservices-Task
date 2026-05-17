@@ -1,41 +1,229 @@
-# Cloud and Containers
 
-## Microservices Containerization using Docker
+# Kubernetes Microservices Deployment using Minikube
 
-## Overview
-This project demonstrates containerization of a microservices-based application using Node.js, Docker, and Docker Compose.
+## Project Overview
 
-The application consists of:
-- User Service (Port 3000)
-- Product Service (Port 3001)
-- Gateway Service (Port 3003)
+This project demonstrates deployment of a containerized Node.js microservices application on Kubernetes using Minikube. The application architecture follows the microservices approach where multiple independent services communicate with each other within a Kubernetes cluster.
+
+The project focuses on Kubernetes deployments, service configuration, container orchestration, service discovery, and validation of inter-service communication using Minikube.
 
 ---
 
-## Technologies Used
+# Objective
+
+The main objective of this project is to:
+
+- Deploy multiple Node.js microservices on Kubernetes
+- Configure Kubernetes Deployments and Services
+- Enable communication between services inside the cluster
+- Use Minikube as the local Kubernetes environment
+- Validate application accessibility and pod health
+- Understand container orchestration concepts using Kubernetes
+
+---
+
+# Application Components
+
+The application consists of four containerized Node.js microservices:
+
+| Service Name | Description | Port |
+|---|---|---|
+| User Service | Handles user-related operations | 3000 |
+| Product Service | Handles product-related operations | 3001 |
+| Order Service | Handles order-related operations | 3002 |
+| Gateway Service | Acts as API gateway and entry point | 3003 |
+
+The Gateway Service serves as the external access point for the application and routes requests to internal services.
+
+---
+
+# Project Structure
+
+```text
+Submission/
+├── deployments/
+│   ├── user-service.yaml
+│   ├── product-service.yaml
+│   ├── order-service.yaml
+│   └── gateway-service.yaml
+│
+├── services/
+│   ├── user-service.yaml
+│   ├── product-service.yaml
+│   ├── order-service.yaml
+│   └── gateway-service.yaml
+│
+├── screenshots/
+│   ├── pods.png
+│   ├── logs.png
+│   └── service-test.png
+│
+└── README.md
+```
+
+---
+
+# Technologies Used
+
+The following technologies and tools were used in this project:
+
+- Kubernetes
+- Minikube
+- Docker Desktop
 - Node.js
-- Docker
-- Docker Compose
+- kubectl
+- Visual Studio Code
+- Git & GitHub
 
 ---
 
-## Setup Instructions
+# Kubernetes Resources Implemented
 
-Step 1: Clone Repository
-git clone https://github.com/mohanDevOps-arch/Microservices-Task.git
-cd Microservices-Task
+## Deployments
 
-Step 2: Run Application
-docker-compose up --build
+Separate Kubernetes Deployment manifests were created for all four microservices.
 
-### Services Access
-ServiceURLUser Servicehttp://localhost:3000Product Servicehttp://localhost:3001Gateway Servicehttp://localhost:3003
+Each deployment includes:
 
-### Expected Output
+- Container image configuration
+- Labels and selectors
+- Resource requests and limits
+- Environment variables
+- Replica configuration
+- Liveness and readiness probe configuration
 
-user-service     | Server running on port 3000
-product-service  | Server running on port 3001
-gateway-service  | Gateway running on port 3003
+Deployments ensure high availability and automated pod management inside the cluster.
+
+---
+
+## Services
+
+Kubernetes Services were created for all microservices to enable communication within the cluster.
+
+### Service Types Used
+
+| Service | Type |
+|---|---|
+| User Service | ClusterIP |
+| Product Service | ClusterIP |
+| Order Service | ClusterIP |
+| Gateway Service | NodePort |
+
+ClusterIP services provide internal communication between services, while the Gateway Service uses NodePort to allow external access from the browser.
+
+---
+
+# Minikube Configuration
+
+Minikube was used as the local Kubernetes environment for deploying and testing the application.
+
+The Docker driver was configured with Minikube to simplify container management and local deployment.
+
+The Kubernetes cluster was successfully initialized, and all deployments and services were applied using kubectl.
+
+---
+
+# Deployment Process
+
+The deployment process involved the following steps:
+
+1. Building Docker images for all microservices
+2. Starting Minikube cluster
+3. Applying Kubernetes Deployment manifests
+4. Applying Kubernetes Service manifests
+5. Verifying pod status and service configuration
+6. Testing application accessibility through Gateway Service
+
+All Kubernetes resources were deployed successfully and verified using kubectl commands.
+
+---
+
+# Service Communication
+
+The microservices communicate internally using Kubernetes service discovery.
+
+ClusterIP services allow internal communication using service names rather than IP addresses. This enables reliable and scalable communication between services inside the Kubernetes cluster.
+
+The Gateway Service acts as the central entry point and communicates with the User, Product, and Order services.
+
+---
+
+# Validation and Testing
+
+The deployment was validated using the following methods:
+
+- Verification of running pods
+- Verification of Kubernetes services
+- Docker container log inspection
+- Gateway Service accessibility testing
+- Minikube service exposure testing
+
+All microservices were successfully deployed and reached Running state inside the Kubernetes cluster.
+
+---
+
+# Screenshots Included
+
+The screenshots folder contains evidence of successful deployment and testing:
+
+| Screenshot | Description |
+|---|---|
+| pods.png | Running Kubernetes pods |
+| logs.png | Application and service logs |
+| service-test.png | Gateway service accessibility test |
+
+---
+
+# Troubleshooting Performed
+
+During deployment, the following issues were identified and resolved:
+
+- Docker image pull issues
+- Minikube configuration setup
+- Kubernetes probe failures
+- Pod restart issues
+- Service accessibility verification
+
+Liveness and readiness probes were temporarily adjusted because the sample Node.js services did not expose dedicated health-check endpoints.
+
+---
+
+# Key Kubernetes Concepts Demonstrated
+
+This project demonstrates practical implementation of:
+
+- Kubernetes Deployments
+- Kubernetes Services
+- Pod Management
+- ReplicaSets
+- ClusterIP Networking
+- NodePort Exposure
+- Container Orchestration
+- Service Discovery
+- Resource Management
+- Minikube Local Cluster Setup
+
+---
+
+### Docker build images:
+
+<img width="940" height="690" alt="image" src="https://github.com/user-attachments/assets/cd97f420-9c0d-44e9-a9e8-d16357676dd0" />
+
+<img width="940" height="698" alt="image" src="https://github.com/user-attachments/assets/34104959-0cd9-4d19-b048-a5210f4088fa" />
+
+<img width="940" height="712" alt="image" src="https://github.com/user-attachments/assets/419166a1-3c8e-4a23-883b-69631c7791a8" />
+
+<img width="940" height="726" alt="image" src="https://github.com/user-attachments/assets/4f7931f8-a4ec-49e0-af04-23ca97143cc4" />
+
+<img width="940" height="764" alt="image" src="https://github.com/user-attachments/assets/4a9d714d-60b2-4df0-af34-2daad982a2db" />
+
+## pods.png, logs.png & services.png: 
+
+<img width="940" height="467" alt="image" src="https://github.com/user-attachments/assets/ffd091ae-6e53-4ccf-b9d5-aff1b387d5d2" />
+
+<img width="940" height="311" alt="image" src="https://github.com/user-attachments/assets/3812524a-d36f-4154-acf0-89ca47a2754e" />
+
+<img width="940" height="422" alt="image" src="https://github.com/user-attachments/assets/f812dae1-7190-4bef-9655-641debe38568" />
 
 ### Test in Browser
 
@@ -51,81 +239,16 @@ http://localhost:3002 > Order Service
 
 http://localhost:3003 → Gateway Service
 
-### Troubleshooting
-Containers not starting > Run docker-compose down and retry
-Module errors > Run npm install locally
+--------
 
-### Screenshots showing running containers and browser output)
 
-<img width="946" height="633" alt="image" src="https://github.com/user-attachments/assets/b6897fd0-2ab5-4745-a16c-1e62f15754fa" />
+# Conclusion
 
-<img width="1906" height="577" alt="image" src="https://github.com/user-attachments/assets/0acf6098-2441-46fd-a0c2-b61ce4794729" />
+This project successfully demonstrates deployment and orchestration of a microservices-based Node.js application using Kubernetes and Minikube.
 
-<img width="1909" height="617" alt="image" src="https://github.com/user-attachments/assets/e7303ff8-7f56-4d83-95e3-d9884c383cff" />
+All services were containerized, deployed, exposed, and validated successfully within the Kubernetes cluster. The project provides hands-on understanding of Kubernetes architecture, deployment strategies, service communication, and local cluster management using Minikube.
 
-<img width="1916" height="615" alt="image" src="https://github.com/user-attachments/assets/9d4956cb-6ee2-4b09-a04e-6a4b8550a2d9" />
-
-<img width="1919" height="577" alt="image" src="https://github.com/user-attachments/assets/dbad6500-d50b-4901-ab06-de3ab86cca6f" />
-
-<img width="1905" height="652" alt="image" src="https://github.com/user-attachments/assets/a1c38c76-733f-476d-9ab2-63b3db141908" />
-
-### **User Service**
-- **Base URL:** `http://localhost:3000`
-- **Endpoints:**
-  - **List Users:**  
-    ```
-    curl http://localhost:3000/users
-    ```
-    Or open in your browser: [http://localhost:3000/users](http://localhost:3000/users)
-
----
-
-### **Product Service**
-- **Base URL:** `http://localhost:3001`
-- **Endpoints:**
-  - **List Products:**  
-    ```
-    curl http://localhost:3001/products
-    ```
-    Or open in your browser: [http://localhost:3001/products](http://localhost:3001/products)
-
----
-
-### **Order Service**
-- **Base URL:** `http://localhost:3002`
-- **Endpoints:**
-  - **List Orders:**  
-    ```
-    curl http://localhost:3002/orders
-    ```
-    Or open in your browser: [http://localhost:3002/orders](http://localhost:3002/orders)
-
----
-
-### **Gateway Service**
-- **Base URL:** `http://localhost:3003/api`
-- **Endpoints:**
-  - **Users:**  
-    ```
-    curl http://localhost:3003/api/users
-    ```
-  - **Products:**  
-    ```
-    curl http://localhost:3003/api/products
-    ```
-  - **Orders:**  
-    ```
-    curl http://localhost:3003/api/orders
-    ```
-
----
-
-## Instructions
-1. Start all services using the `docker-compose` file:
-   ```
-   docker-compose up --build
-   ```
-2. Once the services are running, use the above endpoints to verify the functionality.
+------
 
 ## Author
 Sweta Patil
